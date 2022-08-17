@@ -88,7 +88,11 @@ public:
             }
             arr[j+1] = 0;
             Size -= 1;
-            Capacity -=1;
+            if((2*Size) == Capacity)
+            {
+                Capacity = Capacity/2;
+            }
+            
         }
         
     }

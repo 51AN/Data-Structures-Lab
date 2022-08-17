@@ -43,11 +43,12 @@ public:
         arr[i] = val;
 
     }
+
     void PushBack(int val)
     {
         if( Size == Capacity )
         {
-            int *new_arr = new int(Capacity * 2);
+            int *new_arr = new int[Capacity * 2];
             for(int i = 0 ; i < Size ; i++)
             {
                 new_arr[i] = arr[i];
@@ -59,6 +60,7 @@ public:
         arr[Size] = val;
         Size++;
     }
+
     int Get_Size()
     {
         return Size;
@@ -84,6 +86,10 @@ public:
             }
             arr[j+1] = 0;
             Size -= 1;
+            if((2*Size) == Capacity)
+            {
+                Capacity = Capacity/2;
+            }
             
         }
         
@@ -102,8 +108,21 @@ int main()
     cout<<"Val: "<< arr.Get(1) <<" Size: "<< arr.Get_Size()<<" Capacity: "<<arr.Get_Capacity()<<nl;
     arr.PushBack(2);
     cout<<"Val: "<< arr.Get(2) <<" Size: "<< arr.Get_Size()<<" Capacity: "<<arr.Get_Capacity()<<nl;
+    arr.PushBack(3);
+    cout<<"Val: "<< arr.Get(3) <<" Size: "<< arr.Get_Size()<<" Capacity: "<<arr.Get_Capacity()<<nl;
+    arr.PushBack(4);
+    cout<<"Val: "<< arr.Get(4) <<" Size: "<< arr.Get_Size()<<" Capacity: "<<arr.Get_Capacity()<<nl;
+    arr.PushBack(5);
+    cout<<"Val: "<< arr.Get(5) <<" Size: "<< arr.Get_Size()<<" Capacity: "<<arr.Get_Capacity()<<nl;
+    arr.PushBack(6);
+    cout<<"Val: "<< arr.Get(6) <<" Size: "<< arr.Get_Size()<<" Capacity: "<<arr.Get_Capacity()<<nl;
+    arr.PushBack(7);
+    cout<<"Val: "<< arr.Get(7) <<" Size: "<< arr.Get_Size()<<" Capacity: "<<arr.Get_Capacity()<<nl;
+    arr.PushBack(8);
+    cout<<"Val: "<< arr.Get(8) <<" Size: "<< arr.Get_Size()<<" Capacity: "<<arr.Get_Capacity()<<nl;
+    
 
-    arr.Remove(1);
+    arr.Remove(8);
     cout<<"After remove"<<nl;
     cout<<"Val: "<< arr.Get(0) <<" Size: "<< arr.Get_Size()<<" Capacity: "<<arr.Get_Capacity()<<nl;
     cout<<"Val: "<< arr.Get(1) <<" Size: "<< arr.Get_Size()<<" Capacity: "<<arr.Get_Capacity()<<nl;
