@@ -1,0 +1,1 @@
+cout<<"Val: "<< arr.Get(1) <<" Size: "<< arr.Get_Size()<<" Capacity: "<<arr.Get_Capacity()<<nl;
