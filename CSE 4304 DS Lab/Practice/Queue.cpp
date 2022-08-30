@@ -90,11 +90,11 @@ public:
         else
         {
             int j;
-            for(j = 0 ; j < (Size - 1) ; j++)
+            for(j = 1 ; j < (Size) ; j++)
             {
-                arr[j] = arr[j+1]; 
+                arr[j-1] = arr[j]; 
             }
-            arr[j+1] = 0;
+            arr[j] = 0;
             Size -= 1;
             if((2*Size) == Capacity)
             {
