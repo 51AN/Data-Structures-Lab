@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+#include<cstdlib>
 using namespace std;
 
 int main()
@@ -10,41 +11,36 @@ int main()
     while(t--)
     {
         int a,b;
-        cin>>a;
-        cin>>b;
+        cin>>a>>b;
+        
 
-        pq.push(make_pair(a, true));
+        pq.push({a,true});
 
-        pq.push(make_pair(b, false));
+        pq.push({b,false});
     }
 
 
     int checkRoom = 0;
-    int max = 0;
-    while(pq.size() != 0)
+    int maxRoom = 0;
+    while(!pq.empty())
     {
-        pair<int, int> top = pq.top();
-
-        if(top.second)
+       
+        if(!pq.top().second)
         {
             checkRoom++;
         }
-        else if(!top.second)
+        else if(pq.top().second)
         {
             checkRoom--;
         }
 
+        maxRoom = max(maxRoom, checkRoom);
         
-        if(max < checkRoom)
-        {
-            max = checkRoom;
-        }
-
         pq.pop();
 
     }
 
-    cout<<max<<endl;
+    cout<<maxRoom<<endl;
 
 
 
