@@ -1,6 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+
+    
+
 int PARENT(int i) {
     return (i) / 2;
 }
@@ -72,7 +75,6 @@ int heap_extractmin(int a[], int N)
 
     a[N] = 0;
 
-    minHeap(a, N);
 
     return a[1];
 } 
