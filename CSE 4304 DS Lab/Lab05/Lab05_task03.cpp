@@ -102,13 +102,45 @@ int main()
     printHeap(a,n);
 
     int cnt = 0;
-    while(heap_minimim(a)<=k)
+    // while(heap_minimim(a)<=k)
+    // {
+    //     int temp = 0;
+    //     temp = heap_extractmin(a,n) + (2 * heap_extractmin(a,(n-1)));
+    //     minHeapInsert(temp,a,(n-2));
+    //     --n;
+    //     ++cnt;
+    // }
+
+    while(n!=0)
     {
-        int temp = 0;
-        temp = heap_extractmin(a,n) + (2 * heap_extractmin(a,(n-1)));
-        minHeapInsert(temp,a,(n-2));
+        int check = heap_minimim(a);
+
+        if(check>7)
+            break;
+
+        int val = 0;
+
+        int firstL = 0, secondL = 0;
+        
+        firstL = heap_extractmin(a,n);
         --n;
+
+        if(n == 0)
+            break;
+
+        secondL = heap_extractmin(a,n);
+        --n;
+
+
+        val = firstL + (2*secondL);
+
+
+        minHeapInsert(val, a, n);
+        ++n;
+
         ++cnt;
+
+
     }
 
     cout<<cnt;
