@@ -76,7 +76,7 @@ class BST {
             {
                 if(t->data > ans)
                     ans = t->data;
-                if(t->data < x)
+                if(t->data > x)
                     t = t->left;
                 else
                     t = t->right;
