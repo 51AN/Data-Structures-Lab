@@ -19,6 +19,7 @@ class BST {
     
     struct node {
         int data;
+        int subTreeSize;
         node* left;
         node* right;
     };
