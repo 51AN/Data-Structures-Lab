@@ -19,9 +19,9 @@ class BST {
     
     struct node {
         int data;
-        int subTreeSize;
         node* left;
         node* right;
+        node* parent;
     };
 
     node* root;
@@ -34,11 +34,22 @@ class BST {
             t = new node;
             t->data = x;
             t->left = t->right = NULL;
+            t->parent = NULL;
         }
-        else if(x < t->data)
-            t->left = insert(x, t->left);
-        else if(x > t->data)
-            t->right = insert(x, t->right);
+     
+        else if(x < t->data){
+
+            node* leftChild = insert(x, t->left);
+            t->left = leftChild;
+            leftChild->parent = t;
+            // t->left = insert(x, t->left);
+            }
+        else if(x > t->data){
+            node* rightChild = insert(x, t->right);
+            t->right = rightChild;
+            rightChild->parent = t;
+            // t->right = insert(x, t->right);
+            }
         return t;
     }
 
@@ -62,6 +73,27 @@ class BST {
             return t;
     }
 
+    int subtree_size(node* t){
+            int x = 0;
+            int y = 0 ;
+            if(t != nullptr){
+                x=subtree_size(t->left);
+                y=subtree_size(t->right);
+                return x + y + 1;
+            }
+            return 0;
+        }
+
+    int previous_reservations(node* t){
+            int cnt = 0;
+            cnt += subtree_size(t->left);
+            while(t->parent != nullptr && t->parent->right == t){
+                t = t->parent;
+                cnt += (subtree_size(t->left) + 1);
+            }
+            return cnt;
+        }
+
 public:
     BST() {
         root = NULL;
@@ -79,6 +111,10 @@ public:
 
     void search(int x) {
         root = find(root, x);
+    }
+
+    int reservations(int x){
+        return previous_reservations(find(root,x));
     }
 };
  
@@ -104,9 +140,13 @@ int main()
 
     }
 
-    airLine.display();
+    test(t){
+        int n;
+        cin>>n;
+        cout<<airLine.reservations(n)<<nl;
+    }
 
-  
+    // airLine.display();
 
     re;
 }
