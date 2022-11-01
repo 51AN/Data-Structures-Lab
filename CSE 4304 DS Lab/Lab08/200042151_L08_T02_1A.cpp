@@ -78,15 +78,31 @@ int main(){
     vector<string>products;
 
     string input;
-    cin>>input;
 
-    while(input != "\n"){
+    while(true){
+        cin>>input;
+        if(input == "0"){
+            break;
+        }
         products.push_back(input);
     }
 
     string searchWord;
 
     cin>>searchWord;
+
+    Trie* obj = new Trie();
+
+    for(int i = 0 ; i < products.size() ; i++){
+        obj->insert(products[i]);
+    }
+
+    f(i,searchWord.length()){
+
+        
+
+    }
+
     
     re;
 

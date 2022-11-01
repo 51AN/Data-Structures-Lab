@@ -91,14 +91,27 @@ class WordDictionary{
 
 public :
     Trie* obj = new Trie();
+    WordDictionary(){
+        cout<<"Object Created"<<nl;
+    }
 
     void addWord(string word){
         obj->insert(word);
-        //cout<<"Word Added"<<nl;
+        cout<<"Word Added"<<nl;
     }
 
     bool search(string word){
-        return obj->search(word);
+        //return obj->search(word);
+
+        if(obj->search(word))
+        {
+            cout<<"Word Found"<<nl;
+            return true;
+        }
+        else{
+            cout<<"Word not found"<<nl;
+            return false;
+        }
     }
 
 };
@@ -112,11 +125,15 @@ int main(){
 
     WordDictionary wd;
 
-    wd.addWord("given");
-    cout<<"Word added"<<nl;
-    if(wd.search("g..en") == true){
-        cout<<"Word found"<<nl;
-    } 
+    wd.addWord("bad");
+    wd.addWord("dad");
+    wd.addWord("mad");
+    
+    wd.search("pad");
+    wd.search("dad");
+    wd.search(".ad");
+    wd.search("b..");
+    
 
 
 
