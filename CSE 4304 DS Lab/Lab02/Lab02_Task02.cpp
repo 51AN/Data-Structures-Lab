@@ -90,6 +90,13 @@ public:
             Size -= 1;
             if((2*Size) == Capacity)
             {
+                int *new_arr = new int[Capacity / 2];
+                for(int i = 0 ; i < Size ; i++)
+                {
+                    new_arr[i] = arr[i];
+                }
+                delete(arr);
+                arr = new_arr;
                 Capacity = Capacity/2;
             }
             
